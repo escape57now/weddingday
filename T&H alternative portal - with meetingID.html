@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to Tom and Hazel's Live Wedding Stream</title>
+    <style>
+        body {
+            background-image: url("weddingtable.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font-family: serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #login-form input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        #login-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login-container">
+        <h1>Tom & Hazel's Wedding Live!</h1>
+        <p>Live Stream Schedule:</p>
+        <p>1:00pm (GMT) - Ceremony</p>
+        <p>7:30pm (GMT) - Speeches, Toast, and Cake Cutting</p>
+        <form id="login-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="meeting-id" placeholder="Meeting ID" value="8617693711" required>
+            <input type="password" id="passcode" placeholder="Passcode" required>
+            <button type="submit">Join The Wedding</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var meetingId = document.getElementById("meeting-id").value;
+            var passcode = document.getElementById("passcode").value;
+            if (name && meetingId && passcode) {
+                var zoomUrl = "zoommtg://zoom.us/join?action=join&confno=" + meetingId + "&pwd=" + passcode;
+                window.location.href = zoomUrl;
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        });
+    </script>
+</body>
+
+</html>
